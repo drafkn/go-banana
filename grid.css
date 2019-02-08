@@ -1,0 +1,253 @@
+@font-face {
+  font-family:"Gotham Light";
+  src: url("font/Gotham-Light.otf") format("opentype");
+  font-weight:normal !important;
+  font-style:normal !important;
+}
+body {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  font-family:"Gotham Light" !important;
+  font-weight:normal !important;
+  font-style:normal !important;
+  font-size:14px !important;
+}
+.header [class*="col-"] {
+  padding:0px !important;
+  margin:0px !important;
+}
+h1{
+  font-size:30px !important;;
+  font-weight:normal !important;
+  font-style:normal !important;
+}
+h2,h3,h4,h5{
+  font-size:16px !important;;
+  font-weight:normal !important;
+  font-style:normal !important;
+}
+.lead{
+  font-weight:bold !important;
+  font-size:28px !important;
+}
+.spacer{
+  padding:5px;
+}
+
+[class*="col-"] {
+  padding-top: 1rem;
+  /*padding-bottom: 1rem;
+  */
+}
+
+hr {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+.login{
+  margin:0 auto !important;
+}
+.container-body{
+  background: radial-gradient(
+	circle closest-corner at center 755px,
+	#157ab8,
+	#032c6c 90%
+  ) no-repeat;
+  padding:20px;
+  color:#ffffff;
+  width:100%;
+}
+input[type=text]{
+  border-radius: 25px !important;
+  border: 1px solid #157ab8 !important;
+  padding: 20px; 
+  width:100%;
+  height: 15px;
+  text-indent:30px;    
+}
+input[type=password]{
+  border-radius: 25px !important;
+  border: 1px solid #157ab8 !important;
+  padding: 20px; 
+  width:100%;
+  height: 15px;
+  text-indent:30px;    
+}
+.role{
+  border-radius: 25px !important;
+  border: 1px solid #157ab8 !important;
+  padding: 20px; 
+  width:100%;
+  padding:12px;  
+  font-size:12px;
+  color:grey;
+  text-indent:35px;
+  background-image: url(img/placeholder_2.png);
+  background-repeat: no-repeat;
+  background-position: 5px 5px;
+}
+input::placeholder { 
+  color: grey; 
+  font-size: 12px; 
+}
+
+input#zip {
+  background-image: url(img/placeholder_1.png);
+  background-repeat: no-repeat;
+  background-position: 5px 5px;
+}
+option{
+  padding:10px;
+}
+label{
+  font-size:12px;
+}
+.profile_left{
+  font-size:12px !important;
+  text-align:center !important;
+  margin:0 auto !important;
+}
+.profile_right{
+  font-size:12px !important;
+  text-align:justify !important;
+  margin:0 auto !important;
+  
+}
+.right{
+  text-align:right;
+}
+hr {
+  display:block;
+  width: 100%;
+  border-width: 1px;
+  background:#157ab8 !important;
+  padding:0px !important;
+  margin:0px !important;
+}
+.footer .col-md-3{
+  text-align:center !important;
+}
+.footer p{
+  text-align:center !important;
+  font-size:11px;
+  color:grey;
+}
+.footer ul {
+  font-weight:normal;
+  font-size:12px;
+  list-style-type: disc;
+  list-style-position: inside;
+  text-align:center !important;
+}
+.footer li {
+  display:inline-block;
+  list-style:none;
+}
+.footer li span {
+  display:list-item;
+  list-style-type: disc;
+  color:grey !important;
+  list-style-position: inside;
+  padding-left:16px;
+}
+.footer li.menulistfirst span {
+  list-style-type: none !important;
+  padding:0px !important;
+  margin:0px !important;
+}
+.footer li a{
+  color:grey !important;
+}
+#resultdata{
+  background:#ffffff;
+  color:grey;
+  font-size:12px;
+  padding:10px;
+  display:none;
+  margin-top:-15px !important;
+}
+
+/* for modal */
+.modal {
+  display: none; 
+  position: fixed; 
+  z-index: 1;
+  padding-top: 100px; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4); 
+  font-size:12px !important;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 100%;
+  font-size:12px !important;
+}
+
+.close {
+  color: #aaaaaa;
+  float: right !important;
+  font-size: 28px;
+  font-weight: bold;
+  text-align:right !important;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+.modal-content .col-md-6{
+	padding-left:30px !important;
+	padding-right:30px !important;
+}
+.modal-content .findalawyer{
+	border-radius: 25px !important;
+	background-color:#02377b !important;
+	color:#ffffff !important;
+	text-align:center !important;
+	width:50% !important;
+	padding:10px;
+	margin:0 auto !important;
+}
+.img-responsive {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+a.links {
+	border:1px solid red !important;
+}
+@media only screen and (max-width: 600px) {
+  .modal-content {
+	width:60% !important;
+	left:-80px;
+  }
+  .modal-content .findalawyer{
+	width:80% !important;
+  }
+  #logo img{
+	width:100% !important;
+  }
+  .row{
+    padding:0px !important;
+	margin:0px !important;
+  }
+  .menutitle{
+	display:none !important;
+  }
+}
