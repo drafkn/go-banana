@@ -30,7 +30,7 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
 	<?php include('menu.php');?>
 	<p><a href="./">Blog Admin Index</a></p>
 	<h2>Edit Post</h2>
-	<?php
+	<?php 
 	//if form has been submitted process it
 	if(isset($_POST['submit'])){
 		$_POST = array_map( 'stripslashes', $_POST );
@@ -48,13 +48,19 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
 		if($postCont ==''){
 			$error[] = 'Please enter the content.';
 		}
+		
 		if(!isset($error)){
-			
+			if(($_FILES["fileToUpload"]["error"] == 4) && ($fileuploadedval == '')){
+				$uploadfilename = '';
+			}else if(($_FILES["fileToUpload"]["error"] == 4) && ($fileuploadedval != '')){
+				$uploadfilename = $fileuploadedval;
+			}else{
 			// upload image start
 				$target_dir = "uploads/";
 				$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 				$uploadOk = 1;
 				$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+				$uploadfilename = $_FILES['fileToUpload']['name'];
 				
 				// Check if image file is a actual image or fake image
 				$check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
@@ -76,7 +82,9 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
 				} else {
 					echo "Sorry, there was an error uploading your file.";
 				}
-				
+			}	
+			
+			
 				// upload image end
 			
 			
@@ -86,7 +94,7 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
 					':postTitle' => $postTitle,
 					':postDesc' => $postDesc,
 					':postCont' => $postCont,
-					':fileuploaded' => $_FILES["fileToUpload"]["name"],
+					':fileuploaded' => $uploadfilename,
 					':postID' => $postID
 				));
 				header('Location: index.php?action=updated');
@@ -105,7 +113,7 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
 		}
 	}
 		try {
-			$stmt = $db->prepare('SELECT postID, postTitle, postDesc, postCont FROM blog_posts WHERE postID = :postID') ;
+			$stmt = $db->prepare('SELECT postID, postTitle, postDesc, postCont, fileuploaded FROM blog_posts WHERE postID = :postID') ;
 			$stmt->execute(array(':postID' => $_GET['id']));
 			$row = $stmt->fetch(); 
 		} catch(PDOException $e) {
@@ -123,8 +131,9 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
 		<textarea name='postDesc' cols='60' rows='10'><?php echo $row['postDesc'];?></textarea></p>
 		<p><label>Content</label><br />
 		<textarea name='postCont' cols='60' rows='10'><?php echo $row['postCont'];?></textarea></p>
-		<p><label>Upload Featured Image</label><br />
-        <input type='file' name='fileToUpload' id="fileToUpload" ></p>
+		<p><label>Upload Featured Image</label><br /> <?php echo $row['fileuploaded']; ?>
+        <input type='hidden' name="fileuploadedval" id="fileuploadedval" value="<?php echo $row['fileuploaded']; ?>">
+		<input type='file' name='fileToUpload' id="fileToUpload" ></p>
 		<p><input type='submit' name='submit' value='Update'></p>
 
 	</form>

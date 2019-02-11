@@ -38,7 +38,13 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
             }
             if($email ==''){
                 $error[] = 'Please enter the email address.';
-            }
+            }else if($email !=''){
+				if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+					//
+				} else {
+					$error[] = 'invalid email address';
+				}
+			}
             if(!isset($error)){
                 $hashedpassword = $user->password_hash($password, PASSWORD_BCRYPT);
                 try {
